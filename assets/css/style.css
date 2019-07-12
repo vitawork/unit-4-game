@@ -1,0 +1,48 @@
+* {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#divheader {
+  border-bottom: 5px solid rgb(6, 67, 78);
+  background:  rgb(79, 153, 153);
+  margin-bottom: 20px;
+}
+
+header {
+  margin: 0 auto;
+}
+
+#divcentral1 {
+  border: 2px solid rgb(6, 67, 78);
+  padding: 0;
+}
+
+#divcentral {
+  border: 7px solid rgb(6, 67, 78);
+  margin: 3px;
+}
+
+#colleft {
+  /* margin: 2%; */
+  /* border: 2px solid rgba(44, 44, 44, 0.26); */
+  padding: 0;
+  margin: 0;
+  border-right: 2px solid rgba(44, 44, 44, 0.26);
+}
+
+#you,
+#defender {
+  margin: 0 5% 5% 5%;
+  width: 90%;
+  min-height: 200px;
+  border: 2px solid rgba(44, 44, 44, 0.26);
+}
+
+h3 {
+  margin: 0;
+}
+
+button {
+  margin-bottom: 10px;
+}

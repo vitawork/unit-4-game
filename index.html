@@ -1,34 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Jiggle Into JavaScript</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="assets/css/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="assets/css/reset.css"
+    />
+    <script src="assets/javascript/game.js"></script>
   </head>
   <body>
-    <p>Press the buttons to move the box!</p>
+    <div class="container-fluid">
+      <div id="divheader" class="row">
+        <header>
+          <h1><strong>Harry Potter Battle</strong></h1>
+        </header>
+      </div>
+      <!--main box -->
+      <div
+        id="divcentral1"
+        class="col-xs-12 col-sm-offset-1 col-sm-10 col-lg-offset-2 col-lg-8"
+      >
+        <div id="divcentral" class="row">
+          <!--left column -->
+          <div id="colleft" class="col-xs-12 col-sm-5 col-lg-4">
+            <!--contenido col left-->
+            <h3>You:</h3>
+            <div id="you"></div>
+            <button type="button" class="btn btn-outline-danger">Attack</button>
+            <h3>Defender:</h3>
+            <div id="defender"></div>
+          </div>
+          <!--rigth column -->
+          <div id="colrigth" class="col-xs-12 col-sm-6 col-lg-7">
+            <!--contenido col rigth-->
+            <h3>Characters:</h3>
+            <div id="characters"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div
-      id="box"
-      style="height:150px; width:150px; background-color:orange; margin:25px"
-    ></div>
-
-    <button id="shrinkBtn">Shrink</button>
-    <button id="growBtn">Grow</button>
-    <button id="resetBtn">Reset</button>
-
-    <script type="text/javascript">
-      document
-        .getElementById("shrinkBtn")
-        .addEventListener("click", function() {
-          document.getElementById("box").style.height = "25px";
-        });
-
-      document.getElementById("growBtn").addEventListener("click", function() {
-        document.getElementById("box").style.height = "250px";
-      });
-
-      document.getElementById("resetBtn").addEventListener("click", function() {
-        document.getElementById("box").style.height = "150px";
-      });
-    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
