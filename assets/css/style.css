@@ -5,7 +5,7 @@
 
 #divheader {
   border-bottom: 5px solid rgb(6, 67, 78);
-  background:  rgb(79, 153, 153);
+  background: rgb(114, 133, 133);
   margin-bottom: 20px;
 }
 
@@ -21,6 +21,7 @@ header {
 #divcentral {
   border: 7px solid rgb(6, 67, 78);
   margin: 3px;
+  background-color: rgba(173, 169, 169, 0.61);
 }
 
 #colleft {
@@ -45,4 +46,18 @@ h3 {
 
 button {
   margin-bottom: 10px;
+}
+
+#characters {
+  align-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cpict {
+  width: 100%;
+}
+
+button {
+  width: 99%;
 }
