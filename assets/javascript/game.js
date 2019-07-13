@@ -1,16 +1,13 @@
 $(document).ready(function() {
   var attacknumbers = 0;
-  // var available = [];
   var yourch = {};
   var defenderch = {};
-
-  // $("#characters").empty(); /////limpier characters
 
   var characters = [
     {
       name: "Harry",
       srcrt: "assets/images/1.jpg",
-      hpoints: 130,
+      hpoints: 140,
       apower: 10,
       capower: 30
     },
@@ -46,10 +43,6 @@ $(document).ready(function() {
 
   function reset() {
     attacknumbers = 0;
-    // available = [];
-    // for (let i = 0; i < characters.length; i++) {
-    //   available[i] = true;
-    // }
     yourch = {
       name: "",
       srcrt: "",
@@ -64,10 +57,43 @@ $(document).ready(function() {
       apower: 0,
       capower: 0
     };
+
+    $("#you").empty();
+    $("#you").html("<p>");
+    $("#you p").text("Choose a character");
+
+    $("#defender").empty();
+
+    creating_characters(); /////creating characters
+
+    ///////clicking characters
+    var chdiv = $("#characters div");
+    for (let h = 0; h < chdiv.length; h++) {
+      $(chdiv[h]).on("click", function(e) {
+        if (yourch.name === "") {
+          $(this).remove();
+          yourch = Object.assign({}, characters[h]);
+          $("#you").empty();
+          creating_a_character(yourch, "#you");
+          $("#you p").text("Health: " + yourch.hpoints);
+          $("#defender").empty();
+          $("#defender").html("<p>");
+          $("#defender p").text("Choose another character");
+        } else {
+          if (defenderch.name === "") {
+            $(this).remove();
+            defenderch = Object.assign({}, characters[h]);
+            $("#defender").empty();
+            creating_a_character(defenderch, "#defender");
+            $("#defender p").text("Health: " + defenderch.hpoints);
+          }
+        }
+      });
+    }
   }
   reset(); ////reseating to star
 
-  /////creating dinamicaly characters
+  /////creating dinamicaly a character
   function creating_a_character(character, divid) {
     var pict = $("<img>");
     pict.attr("src", character.srcrt);
@@ -91,37 +117,77 @@ $(document).ready(function() {
   function creating_characters() {
     $("#characters").empty();
     for (let i = 0; i < characters.length; i++) {
-      // if (available[i] === true) {
       creating_a_character(characters[i], "#characters");
       $("#" + characters[i].name).css({
         width: "30%",
         margin: "5px",
         float: "left"
       });
-      // }
     }
-  }
-  creating_characters(); /////creating characters to star
-
-  ///////clicking characters
-  var ch = $("#characters div");
-  for (let h = 0; h < ch.length; h++) {
-    $(ch[h]).on("click", function(e) {
-      if (yourch.name === "") {
-        $(this).hide();
-        yourch = characters[h];
-        creating_a_character(yourch, "#you");
-      } else {
-        if (defenderch.name === "") {
-          $(this).hide();
-          defenderch = characters[h];
-          creating_a_character(defenderch, "#defender");
-        }
-      }
-    });
   }
 
   //////button attack
+  $("button").on("click", function() {
+    if (yourch.hpoints > 0 && defenderch.hpoints > 0) {
+      /////Attacking
+      attacknumbers++;
+
+      yourch.hpoints -= defenderch.capower;
+      if (yourch.hpoints > 0) {
+        $("#you  p").text("Health: " + yourch.hpoints);
+      } else {
+        $("#you  p").text("Health: 0");
+      }
+
+      defenderch.hpoints -= yourch.apower * attacknumbers;
+      if (defenderch.hpoints > 0) {
+        $("#defender  p").text("Health: " + defenderch.hpoints);
+      } else {
+        $("#defender  p").text("Health: 0");
+      }
+
+      //////checking if loose, won or tie
+      if (yourch.hpoints <= 0) {
+        if (defenderch.hpoints <= 0) {
+          ////////tie, restarting game
+          $("#colleft  p").text("Health:0 TIED Both Died");
+        } else {
+          /////loss, restarting game
+          $("#you  p").text("Health: 0 YOU LOOSE");
+        }
+
+        setTimeout(function() {
+          reset();
+        }, 2000);
+      } else {
+        if (defenderch.hpoints <= 0) {
+          if ($("#characters div").length === 0) {
+            /////Win Win Win
+            $("#you  p").text("WIN WIN WIN");
+            setTimeout(function() {
+              reset();
+            }, 2500);
+          } else {
+            /////// defeated, next
+            setTimeout(function() {
+              $("#defender").empty();
+              $("#defender").html("<p>");
+              $("#defender p").text("Choose another character");
+              defenderch = {
+                name: "",
+                srcrt: "",
+                hpoints: 0,
+                apower: 0,
+                capower: 0
+              };
+            }, 2000);
+          }
+
+          $("#defender  p").text("Health: 0 DEFEATED");
+        }
+      } ////////
+    }
+  });
 
   console.log();
 });
