@@ -61,3 +61,8 @@ button {
 button {
   width: 99%;
 }
+
+#divcentral > h1 {
+  font-size: 600%;
+  padding-top: 15%;
+}

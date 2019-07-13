@@ -7,7 +7,7 @@ $(document).ready(function() {
     {
       name: "Harry",
       srcrt: "assets/images/1.jpg",
-      hpoints: 140,
+      hpoints: 1400,
       apower: 10,
       capower: 30
     },
@@ -59,8 +59,9 @@ $(document).ready(function() {
     };
 
     $("#you").empty();
-    $("#you").html("<p>");
-    $("#you p").text("Choose a character");
+    $("#you").html("<h5>");
+    $("#you h5").text("Choose a character");
+    $("#you h5").css("margin-top", "30%");
 
     $("#defender").empty();
 
@@ -77,8 +78,9 @@ $(document).ready(function() {
           creating_a_character(yourch, "#you");
           $("#you p").text("Health: " + yourch.hpoints);
           $("#defender").empty();
-          $("#defender").html("<p>");
-          $("#defender p").text("Choose another character");
+          $("#defender").html("<h5>");
+          $("#defender h5").text("Choose another character");
+          $("#defender h5").css("margin-top", "30%");
         } else {
           if (defenderch.name === "") {
             $(this).remove();
@@ -153,37 +155,48 @@ $(document).ready(function() {
           $("#colleft  p").text("Health:0 TIED Both Died");
         } else {
           /////loss, restarting game
-          $("#you  p").text("Health: 0 YOU LOOSE");
+          $("#you  p").text("Health: 0 YOU LOST");
+          /////////////////////////////////////////////////////////
+          $("#divcentral div").hide();
+          $("#divcentral").css("min-height", "500px");
+          $("#divcentral").append("<h1>You Lost</h1>");
         }
 
         setTimeout(function() {
+          $("#divcentral h1").remove();
+          $("#divcentral div").show();
           reset();
-        }, 2000);
+        }, 2500);
       } else {
         if (defenderch.hpoints <= 0) {
           if ($("#characters div").length === 0) {
             /////Win Win Win
             $("#you  p").text("WIN WIN WIN");
+            //////////////////////////////////////////////////
+            $("#divcentral div").hide();
+            $("#divcentral").css("min-height", "500px");
+            $("#divcentral").append("<h1>You WIN</h1>");
             setTimeout(function() {
+              $("#divcentral h1").remove();
+              $("#divcentral div").show();
               reset();
             }, 2500);
           } else {
             /////// defeated, next
-            setTimeout(function() {
-              $("#defender").empty();
-              $("#defender").html("<p>");
-              $("#defender p").text("Choose another character");
-              defenderch = {
-                name: "",
-                srcrt: "",
-                hpoints: 0,
-                apower: 0,
-                capower: 0
-              };
-            }, 2000);
-          }
 
-          $("#defender  p").text("Health: 0 DEFEATED");
+            // $("#defender").empty();
+            $("#defender").html("<h4>DEFEATED</h4>");
+            $("#defender h4").css("margin-top", "25%");
+            $("#defender").append("<h6>");
+            $("#defender h6").text("Choose another character");
+            defenderch = {
+              name: "",
+              srcrt: "",
+              hpoints: 0,
+              apower: 0,
+              capower: 0
+            };
+          }
         }
       } ////////
     }
