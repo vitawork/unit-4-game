@@ -2,41 +2,52 @@ $(document).ready(function() {
   var attacknumbers = 0;
   var yourch = {};
   var defenderch = {};
+  var audio = new Audio(
+    "https://ia801309.us.archive.org/28/items/HarryPotter-hedwigTheme/Harry_Potter_Theme_Song_Hedwigs_Theme.mp3"
+  );
+  audio.play();
 
   var characters = [
     {
       name: "Harry",
-      srcrt: "assets/images/1.jpg",
-      hpoints: 1400,
+      srcrt: "assets/images/1.png",
+      hpoints: 200,
       apower: 10,
-      capower: 30
+      capower: 25
     },
     {
       name: "Hermione",
-      srcrt: "assets/images/2.jpg",
-      hpoints: 110,
+      srcrt: "assets/images/2.png",
+      hpoints: 180,
       apower: 8,
-      capower: 22
+      capower: 17
     },
     {
-      name: "Malfoy",
-      srcrt: "assets/images/3.jpg",
-      hpoints: 110,
+      name: "Roy",
+      srcrt: "assets/images/3.png",
+      hpoints: 150,
       apower: 6,
-      capower: 20
+      capower: 16
     },
     {
       name: "Snape",
-      srcrt: "assets/images/4.jpg",
-      hpoints: 100,
+      srcrt: "assets/images/4.png",
+      hpoints: 190,
       apower: 8,
-      capower: 24
+      capower: 20
     },
     {
       name: "Voldemort",
-      srcrt: "assets/images/5.jpg",
-      hpoints: 150,
+      srcrt: "assets/images/5.png",
+      hpoints: 210,
       apower: 9,
+      capower: 22
+    },
+    {
+      name: "Dumbledore",
+      srcrt: "assets/images/6.png",
+      hpoints: 190,
+      apower: 8,
       capower: 25
     }
   ];
@@ -61,7 +72,7 @@ $(document).ready(function() {
     $("#you").empty();
     $("#you").html("<h5>");
     $("#you h5").text("Choose a character");
-    $("#you h5").css("margin-top", "30%");
+    $("#you h5").css("margin-top", "45%");
 
     $("#defender").empty();
 
@@ -76,17 +87,19 @@ $(document).ready(function() {
           yourch = Object.assign({}, characters[h]);
           $("#you").empty();
           creating_a_character(yourch, "#you");
+          $("#you img").css("width", "65%");
           $("#you p").text("Health: " + yourch.hpoints);
           $("#defender").empty();
           $("#defender").html("<h5>");
           $("#defender h5").text("Choose another character");
-          $("#defender h5").css("margin-top", "30%");
+          $("#defender h5").css("margin-top", "45%");
         } else {
           if (defenderch.name === "") {
             $(this).remove();
             defenderch = Object.assign({}, characters[h]);
             $("#defender").empty();
             creating_a_character(defenderch, "#defender");
+            $("#defender img").css("width", "65%");
             $("#defender p").text("Health: " + defenderch.hpoints);
           }
         }
@@ -109,10 +122,6 @@ $(document).ready(function() {
     div.append(p);
 
     $(divid).append(div);
-    $("#" + character.name).css({
-      height: "100%",
-      background: "rgba(173, 169, 169, 0.61)"
-    });
   }
 
   ////creating all characters available
@@ -152,11 +161,11 @@ $(document).ready(function() {
       if (yourch.hpoints <= 0) {
         if (defenderch.hpoints <= 0) {
           ////////tie, restarting game
-          $("#colleft  p").text("Health:0 TIED Both Died");
+          $("#divcentral div").hide();
+          $("#divcentral").css("min-height", "500px");
+          $("#divcentral").append("<h1>Tie</h1>");
         } else {
           /////loss, restarting game
-          $("#you  p").text("Health: 0 YOU LOST");
-          /////////////////////////////////////////////////////////
           $("#divcentral div").hide();
           $("#divcentral").css("min-height", "500px");
           $("#divcentral").append("<h1>You Lost</h1>");
@@ -166,13 +175,11 @@ $(document).ready(function() {
           $("#divcentral h1").remove();
           $("#divcentral div").show();
           reset();
-        }, 2500);
+        }, 3000);
       } else {
         if (defenderch.hpoints <= 0) {
           if ($("#characters div").length === 0) {
             /////Win Win Win
-            $("#you  p").text("WIN WIN WIN");
-            //////////////////////////////////////////////////
             $("#divcentral div").hide();
             $("#divcentral").css("min-height", "500px");
             $("#divcentral").append("<h1>You WIN</h1>");
@@ -180,11 +187,10 @@ $(document).ready(function() {
               $("#divcentral h1").remove();
               $("#divcentral div").show();
               reset();
-            }, 2500);
+            }, 3000);
           } else {
             /////// defeated, next
 
-            // $("#defender").empty();
             $("#defender").html("<h4>DEFEATED</h4>");
             $("#defender h4").css("margin-top", "25%");
             $("#defender").append("<h6>");
@@ -198,7 +204,7 @@ $(document).ready(function() {
             };
           }
         }
-      } ////////
+      }
     }
   });
 

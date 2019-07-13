@@ -3,30 +3,30 @@
   margin: 0 auto;
 }
 
-#divheader {
-  border-bottom: 5px solid rgb(6, 67, 78);
-  background: rgb(114, 133, 133);
-  margin-bottom: 20px;
+body {
+  background-image: url("../images/Background4.png");
+  background-size: cover;
+  font-family: "Junge", serif;
+  font-weight: bold;
 }
 
-header {
-  margin: 0 auto;
+header > img {
+  width: 100%;
 }
 
 #divcentral1 {
   border: 2px solid rgb(6, 67, 78);
   padding: 0;
+  margin-bottom: 15px;
 }
 
 #divcentral {
   border: 7px solid rgb(6, 67, 78);
   margin: 3px;
-  background-color: rgba(173, 169, 169, 0.61);
+  background-color: rgba(243, 243, 247, 0.651);
 }
 
 #colleft {
-  /* margin: 2%; */
-  /* border: 2px solid rgba(44, 44, 44, 0.26); */
   padding: 0;
   margin: 0;
   border-right: 2px solid rgba(44, 44, 44, 0.26);
@@ -55,14 +55,14 @@ button {
 }
 
 .cpict {
-  width: 100%;
+  width: 80%;
 }
 
 button {
-  width: 99%;
+  width: 89%;
 }
 
 #divcentral > h1 {
   font-size: 600%;
-  padding-top: 15%;
+  padding-top: 25%;
 }
