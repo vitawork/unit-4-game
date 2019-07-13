@@ -72,7 +72,7 @@ $(document).ready(function() {
     $("#you").empty();
     $("#you").html("<h5>");
     $("#you h5").text("Choose a character");
-    $("#you h5").css("margin-top", "45%");
+    $("#you h5").css("margin-top", "30%");
 
     $("#defender").empty();
 
